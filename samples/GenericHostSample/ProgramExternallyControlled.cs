@@ -30,6 +30,34 @@ namespace GenericHostSample
                 })
                 .Build();
         }
+        #region 添加代码.zf
+
+
+
+        /// <summary>
+        /// IHostBuilder创建IHost
+        /// </summary>
+        public void IHostBuilderBuildHost()
+        {
+            IHost host = new HostBuilder()
+                .ConfigureServices
+                (
+                    (hostContext, services) =>
+                    {
+                        services.AddHostedService<MyServiceA>();
+                        services.AddHostedService<MyServiceA>();
+                    }
+                )
+                .Build();
+        }
+
+
+
+
+
+
+
+        #endregion
 
         public void Start()
         {

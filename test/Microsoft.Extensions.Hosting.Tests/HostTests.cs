@@ -179,6 +179,35 @@ namespace Microsoft.Extensions.Hosting
             }
         }
 
+
+        #region Ìí¼Ó´úÂë.zf
+
+        [Fact]
+        public void AddHostedServiceSameTwice()
+        {
+            using
+            (
+                var host = CreateBuilder()
+                .ConfigureServices
+                (
+                    (hostContext, services) =>
+                    {
+                        services.AddHostedService<TestHostedService>();
+                        services.AddHostedService<TestHostedService>();
+                        services.AddHostedService<TestHostedService>();
+                    }
+                )
+                .Build()
+            )
+            {
+
+            }
+
+
+        }
+
+        #endregion
+
         [Fact]
         public async Task AppCrashesOnStartWhenFirstHostedServiceThrows()
         {
